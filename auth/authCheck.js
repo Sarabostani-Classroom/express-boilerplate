@@ -1,4 +1,4 @@
-exports.authorize = (req, res, next) => {
+exports.authCheck = (req, res, next) => {
     if (req.auth_token && isAuthenticated(req.auth_token))
         next();
     else
