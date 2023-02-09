@@ -20,7 +20,17 @@ GET http://localhost:3000/users
 ```
 ---
 ```json
-POST http://localhost:3000/users/push
+POST/Login http://localhost:3000/login/push
+content-type: application/json
+
+{
+    "username": "John2344",
+    "password": "Password1234",
+}
+```
+---
+```json
+POST/SignUp http://localhost:3000/login/push
 content-type: application/json
 
 {
@@ -31,10 +41,14 @@ content-type: application/json
 ```
 ---
 
+
 ```json
 DELETE http://localhost:3000/users/4
 {
-  returns?
+  "log_id": 12345,
+  "title": string,
+  "content": string,
+  "creator_id": number,
 }
 ```
 ---
@@ -42,8 +56,9 @@ DELETE http://localhost:3000/users/4
 ```json
 PUT http://localhost:3000/users/4
 {
-  "name": "John",
-  "age": 67
+  "user_id": number
+  "name": string,
+  "age": number
 }
 ```
 ---
