@@ -1,9 +1,9 @@
 # Express Boilerplate
 
 - - -
-### api list
+### web log api list
 ```json
-GET http://localhost:3000/users
+GET /
 
 [
     {
@@ -17,6 +17,8 @@ GET http://localhost:3000/users
         "age": 45
     }
 ]
+response status code: 
+- 200 OK
 ```
 ---
 ```json
@@ -27,8 +29,11 @@ content-type: application/json
     "username": "John2344",
     "password": "Password1234",
 }
+response status code: 
+- 200 OK
 ```
 ---
+
 ```json
 POST/SignUp http://localhost:3000/login/push
 content-type: application/json
@@ -38,9 +43,10 @@ content-type: application/json
     "name": "John",
     "age": 34
 }
+response status code: 
+- 200 OK
 ```
 ---
-
 
 ```json
 DELETE http://localhost:3000/users/4
@@ -50,6 +56,10 @@ DELETE http://localhost:3000/users/4
   "content": string,
   "creator_id": number,
 }
+response status code: 
+- 202 Accepted
+- 204 No Content
+- 200 OK
 ```
 ---
 
@@ -60,5 +70,74 @@ PUT http://localhost:3000/users/4
   "name": string,
   "age": number
 }
+response status code: 
+- 202 Accepted
+- 204 No Content
+- 201 Created
+```
+
+---
+```json
+POST /log
+content-type: application/json
+
+{
+   "title": string,
+   "content": string,
+   "creator_id": number,
+} 
+response status code: 
+- 200 OK
+
 ```
 ---
+
+```json
+DELETE /log/12345
+{
+    "log_id": 12345,
+    "title": string,
+    "content": string,
+    "creator_id": number,
+}
+response status code: 
+- 202 Accepted
+- 204 No Content
+- 200 OK 
+```
+---
+
+```json
+PUT /log/12345
+{
+    "title": string,
+    "content": string,
+    "creator_id": number,
+}
+response status code: 
+- 200 OK
+```
+---
+
+```json
+GET /log/12345 - 404
+response status code: 
+- 404 Not Found
+```
+---
+
+```json
+GET /log/user/9876
+{
+    "_id": 9876,
+    "name": "Bob",
+    "age": 26
+}
+response status code: 
+- 200 OK
+
+```
+---
+
+
+
