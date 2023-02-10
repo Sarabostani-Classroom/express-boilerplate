@@ -3,3 +3,13 @@ GET http://localhost:3000/
 
 ###
 GET http://localhost:3000/users
+
+###
+POST http://localhost:3000/users/push
+content-type: application/json
+
+{
+    "_id": 3434,
+    "name": "John",
+    "age": 34
+}
