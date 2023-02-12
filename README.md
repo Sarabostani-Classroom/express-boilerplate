@@ -1,6 +1,19 @@
 # Socal Media API
 
 ## Endpoints:
+### Create account:
+POST /Account/:id?_method=POST
+Body:
+'''
+    Username: <String - UTF8>
+'''
+response:
+'''
+    HTTP/1.1 200 OK
+    Date: <Date time format as string>
+    Status: Created <UserID>
+    Connection: close
+'''
 ### Create post:
 POST /Account/Post/:id?_method=POST
 Body:
@@ -16,7 +29,6 @@ response:
     Date: <Date time format as string>
     Status: Created
     Connection: close
-    ...
 '''
 ### Update post:
 PUT /Account/Post/:id?_method=PUT
@@ -33,7 +45,6 @@ response:
     Date: <Date time format as string>
     Status: Updated post <Post title>
     Connection: close
-    ...
 '''
 ### Delete post:
 DELETE /Account/Post/id
@@ -43,7 +54,6 @@ response:
     Date: <Date time format as string>
     Status: Deleted post <Post title> - <ID>
     Connection: close
-    ...
 '''
 ### Add to your followers:
 PUT /Account/:id?_method=PUT
