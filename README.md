@@ -46,4 +46,47 @@ response:
     ...
 '''
 ### Add to your followers:
+PUT /Account/:id?_method=PUT
+Body:
+'''
+    MyID: <INT>
+    FriendID: <INT>
+'''
+response:
+'''
+    HTTP/1.1 200 OK
+    Date: <Date time format as string>
+    Status: Friended <Username>
+    Connection: close
+'''
 ### View follower posts:
+GET /Account/Friends/Posts/
+'''
+    HTTP/1.1 200 OK
+    Date: Thu, 24 Feb 2011 12:36:30 GMT
+    Status: 200 OK
+    Connection: close
+    Content-Type: application/json
+    Content-Length: 2
+'''
+response:
+'''
+    HTTP/1.1 200 OK
+    Date: <Date time format as string>
+    Status: Updated post <Post title>
+    Connection: close
+    Body:
+        [0]
+            PostID: <INT>
+            PosterID: <INT>
+            Title: <String>
+            ImageURL: <String>
+            Date: <Timestamp>
+        [1]
+            PostID: <INT>
+            PosterID: <INT>
+            Title: <String>
+            ImageURL: <String>
+            Date: <Timestamp>
+        [...]
+'''
