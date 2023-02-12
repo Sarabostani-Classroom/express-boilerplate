@@ -18,7 +18,32 @@ response:
     Connection: close
     ...
 '''
-### Update post
-### Delete post
-### Add to your followers
-### View follower posts
+### Update post:
+PUT /Account/Post/:id?_method=PUT
+Body:
+'''
+    Title: <String - UTF8>
+    Image: <file>
+    Description: <String - UTF8>
+    EditDate: <Current Timestamp>
+'''
+response:
+'''
+    HTTP/1.1 200 OK
+    Date: <Date time format as string>
+    Status: Updated post <Post title>
+    Connection: close
+    ...
+'''
+### Delete post:
+DELETE /Account/Post/id
+response:
+'''
+    HTTP/1.1 200 OK
+    Date: <Date time format as string>
+    Status: Deleted post <Post title> - <ID>
+    Connection: close
+    ...
+'''
+### Add to your followers:
+### View follower posts:
