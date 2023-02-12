@@ -5,7 +5,9 @@
 POST /Account/:id?_method=POST
 Body:
 '''
+{
     Username: <String - UTF8>
+}
 '''
 response:
 '''
