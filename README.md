@@ -6,6 +6,9 @@ POST /Account/:id?_method=POST\
 **Body:**
 ```
     Username: <String - UTF8>
+    Firstname: <String - UTF8>
+    Lastname: <String - UTF8>
+    MyID: <INT>
 ```
 **Response:**
 ```
@@ -22,6 +25,7 @@ POST /Account/Post/:id?_method=POST\
     Image: <file>
     Description: <String - UTF8>
     Date: <Current Timestamp>
+    MyID: <INT>
 ```
 **Response:**
 ```
