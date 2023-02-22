@@ -199,4 +199,55 @@ GET /media?category=music HTTP/1.1
   "message": "Invalid request parameters."
 }
 ```
+ ---
+### Login to account:
+### POST /media/login 
 
+**Request:**
+
+- **Method:** `POST`
+- **URL:** `/media/login`
+- **Body:**
+```json
+{
+  "username": <string>,
+  "password": <string>
+}
+```
+
+**Response:**
+
+- **200 OK** 
+```json
+{
+   "access_token": <access_token>
+}
+```
+ ---
+### Signup an account:
+### POST /media/signup 
+
+**Request:**
+
+- **Method:** `POST`
+- **URL:** `/media/signup`
+- **Body:**
+```json
+{
+  "username": <string>,
+  "email": <string>,
+  "password": <string>
+}
+```
+
+**Response:**
+
+- **201 Created** 
+```json
+{
+  "id": number
+  "username": <string>,
+  "email": <string>,
+  "created_at": <string>
+}
+```
