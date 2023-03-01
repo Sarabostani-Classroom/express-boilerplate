@@ -22,30 +22,35 @@ response status code:
 ```
 ---
 ```json
-POST/Login http://localhost:3000/login/push
+GET/Login http://localhost:3000/login/
 content-type: application/json
 
 {
-    "username": "John2344",
-    "password": "Password1234",
+    "name":"JsonWebTokenError","message":"jwt must be provided"
 }
 response status code: 
-- 200 OK
+- 304 OK
+```
+---
+```json
+GET/Login http://localhost:3000/login?token="accesstoekn"/
+content-type: application/json
+
+{
+  "accountNumber":"938291239","pin":"11289","account":"Finance"
+}
+response status code: 
+- 304 OK
 ```
 ---
 
 ```json
-POST/SignUp http://localhost:3000/login/push
+GET/SignUp http://localhost:3000/signup/
 content-type: application/json
 
-{
-    "_id": 3434,
-    "name": "John",
-    "age": 34
-}
 response status code: 
 - 200 OK
-```
+
 {
    "access_token": <access_token>
 }
