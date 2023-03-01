@@ -46,6 +46,10 @@ content-type: application/json
 response status code: 
 - 200 OK
 ```
+{
+   "access_token": <access_token>
+}
+```
 ---
 
 ```json
