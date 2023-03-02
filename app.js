@@ -21,7 +21,7 @@ app.set('view engine', 'jade');
 
 app.use('/', homeRouter);
 app.use('/users', authCheck, usersRouter);
-app.use('/account', authCheck, accountRouter);
+app.use('/account', accountRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
