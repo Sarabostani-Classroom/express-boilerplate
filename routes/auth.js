@@ -19,6 +19,14 @@ let users = [
         "password": "admin",
     }
 ];
+let sessions = [
+    {
+        "sessionTime": "1678052012358",
+        "Token": "abc123",
+        "user": "admin",
+        "uid": "1"
+    }
+]
 
 
 router.post('/signup', (req, resp, next) => {
@@ -30,6 +38,9 @@ router.post('/signup', (req, resp, next) => {
     const username = req.body.username;
     const password = req.body.password;
     let userId = 1;
+    
+    var mToken = Math.random().toString(36);
+    mToken = mToken.substring(2);
 
     users.forEach(element => {
         if (userId <= parseInt(element.id))
@@ -37,37 +48,55 @@ router.post('/signup', (req, resp, next) => {
             userId = userId + 1;
         }
     });
-
-    console.log("1");
     
-
     users.push({
         id: userId,
         username: username,
         password: password,
     });
+    sessions.push({
+        sessionTime: Date.now(),
+        token: mToken,
+        user: username,
+        uid: userId,
+    });
+
     console.log("Req Body: " + req.body);
     console.log("All Users: ");
     users.forEach(element => {
         console.log("Username: " + element.username + " Password: " + element.password + " ID: " + element.id);
     });
-
-    resp.send("signing up");
+    
+    resp.send({ token: mToken });
 });
+
 
 router.post('/login', (req, resp, next) => {
-    if (!req.body || !req.body.username || !req.body.password)
-    {
-        resp.send(401, 'Bad request')
-    }
-
-    users.forEach(element => {
-        if ((element.username = req.body.username) && (element.password = req.body.password)){
-            resp.send()
+    if(!req.body.token){
+        if (!req.body || !req.body.username || !req.body.password)
+        {
+            resp.send(401, 'Bad request');
         }
-    });
+        let userID = null;
 
-    resp.send("loging in");
+        users.forEach(element => {
+            if ((element.username === req.body.username) && (element.password === req.body.password)){
+                userID = element.id;
+            }
+        });
+        if (userID == null){
+            resp.send("login failed. Please sign up.");
+        }
+
+        resp.send("loging in: " + userID);
+    } else {
+        sessions.forEach(element => {
+            if (element.Token === req.body.token){
+                resp.send({ se: mToken });
+            }
+        });
+    }
 });
+
 
 module.exports = router;
