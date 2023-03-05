@@ -7,7 +7,7 @@ var logger = require('morgan');
 var homeRouter = require('./routes/home');
 var usersRouter = require('./routes/users');
 var accountRouter = require('./routes/account');
-var accountRouter = require('./routes/auth');
+var authRouter = require('./routes/auth');
 const { authCheck } = require('./auth/authCheck');
 
 var app = express();
