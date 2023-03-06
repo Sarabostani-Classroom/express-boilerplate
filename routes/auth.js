@@ -72,29 +72,47 @@ router.post('/signup', (req, resp, next) => {
 
 
 router.post('/login', (req, resp, next) => {
-    if(!req.body.token){
+   
+    if(!req.headers.authorization){
         if (!req.body || !req.body.username || !req.body.password)
         {
             resp.send(401, 'Bad request');
         }
         let userID = null;
-
         users.forEach(element => {
             if ((element.username === req.body.username) && (element.password === req.body.password)){
                 userID = element.id;
             }
         });
-        if (userID == null){
+        
+        if (userID === null){
             resp.send("login failed. Please sign up.");
+        }else{
+            var mToken = Math.random().toString(36);
+            mToken = mToken.substring(2);
+            const username = req.body.username;
+            const timestamp = Date.now();
+           
+        
+            sessions.push({
+                sessionTime: timestamp,
+                token: mToken,
+                user: username,
+                uid: userID,
+            });
+            
+            resp.send({ token: mToken });
         }
 
-        resp.send("loging in: " + userID);
     } else {
+        
+        let GivenToken = req.headers.authorization.substring(7);
         sessions.forEach(element => {
-            if (element.Token === req.body.token){
-                resp.send({ se: mToken });
+            if (element.Token === GivenToken && req.body.username === element.user){
+                resp.send("Active session: " + element.Token);
             }
         });
+        resp.send("incorrect username or token.")
     }
 });
 
