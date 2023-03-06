@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 /*
 Postman /signup:
+    Header:
+        Auth: bearer token
     body:
         setting: raw -> json 
     
