@@ -159,7 +159,22 @@ router.delete('/', (req, resp, next) => { //delete a post
 //DONE: view friends posts
 //DONE: view my posts
 //DONE: Delete post
+
 //TODO: Add friends
+router.post('/', (req, resp, next) => { //Add a friend
+  if (!req.body.id)
+  {
+      resp.send(401, 'Bad request');
+  }
+  posts.push(
+    {
+      userid: toString(req.body.id),
+   
+    }
+  );
+  resp.send("you add "+ req.body.id);
+});
+
 //TODO: remove friends
 //TODO: view only one friends posts
 //TODO: etc...
