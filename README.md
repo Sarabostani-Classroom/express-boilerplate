@@ -1,5 +1,15 @@
 # Social Media API
 
+## Authentication:
+**Authentication type:**
+```
+Bearer token: ab4s5sy63c
+```
+**Getting a token:**
+1. You can sign up using the endpoint /auth/signup and include your username and password in the body.
+2. You can login using /auth/login and include your username and password in the body
+3. You can use the endpoint /auth/login as described in option 2 along with your current auth token.
+
 ## Endpoints:
 ### Create account:
 POST /Account/:id?_method=POST\
