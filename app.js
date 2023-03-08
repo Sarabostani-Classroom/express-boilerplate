@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var homeRouter = require('./routes/home');
 var usersRouter = require('./routes/users');
-var accountRouter = require('./routes/account');
+var postsRouter = require('./routes/posts');
 var authRouter = require('./routes/auth');
 const { authCheck } = require('./auth/authCheck');
 
@@ -22,7 +22,7 @@ app.set('view engine', 'jade');
 
 app.use('/', homeRouter);
 app.use('/users', authCheck, usersRouter);
-app.use('/account', authCheck, accountRouter);
+app.use('/posts', authCheck, postsRouter);
 app.use('/auth', authRouter);
 
 // catch 404 and forward to error handler
