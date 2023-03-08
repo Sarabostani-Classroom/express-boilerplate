@@ -76,7 +76,7 @@ router.get('/', (req, resp, next) => { //getting friends posts
   console.log("!!!!!!!!!!!!!!!!!!");
   posts.forEach(post => {
     friends.forEach(friend => {
-      if(req.body.id === friend.userid && post.userid === friend.friendid){
+      if((req.body.id === friend.userid && post.userid === friend.friendid) || req.body.id === post.userid){
         console.log("Post: " + post.title + " image: " + post.image);
         jsonResp.push(
           {
@@ -92,6 +92,26 @@ router.get('/', (req, resp, next) => { //getting friends posts
   });
  resp.send(JSON.stringify(jsonResp));
 });
+
+router.post('/', (req, resp, next) => { //make a post
+  if (!req.body || !req.body.id || !req.body.title || !req.body.image || !req.body.desc)
+  {
+      resp.send(401, 'Bad request');
+  }
+  let date = Date.now();
+  posts.push(
+    {
+      userid: toString(req.body.id),
+      title: toString(req.body.title),
+      image: toString(req.body.image),
+      desc: toString(req.body.desc),
+      date: toString(date),
+    }
+  );
+  resp.send("you made a post at " + Date.now() + " titled " + req.body.title);
+});
+  
+
 /*
 router.get('/', (req, resp, next) => {
   if (!req.body || !req.body.id)
