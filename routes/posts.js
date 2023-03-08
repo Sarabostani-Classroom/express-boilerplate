@@ -1,28 +1,85 @@
 var express = require('express');
 var router = express.Router();
 
-router.post('/', (req, res, next) => {
-    console.log('middleware');
-    req['craft'] = 'yo';
-    next();
-  }, (req, res, next) => {
-  res.json({data: { title: 'This is accounts/ Method:post' }, craft: req.craft});
-  //res.json({data: 'This is accounts/ Method:post'});
+
+let posts = [
+  {
+      "userid": "1",
+      "title": "Test post 1",
+      "image": "UID 1",
+      "desc": "Test 1",
+      "date": "1678052012358",
+  },
+  {
+    "userid": "1",
+    "title": "Test post 2",
+    "image": "UID 1",
+    "desc": "Test 2",
+    "date": "1678052012358",
+  },
+  {
+    "userid": "2",
+    "title": "Test post 1",
+    "image": "UID 2",
+    "desc": "Test 1",
+    "date": "1678052012358",
+  },
+  {
+    "userid": "2",
+    "title": "Test post 2",
+    "image": "UID 2",
+    "desc": "Test 2",
+    "date": "1678052012358",
+  },
+  {
+    "userid": "3",
+    "title": "Test post 1",
+    "image": "UID 3",
+    "desc": "Test 1",
+    "date": "1678052012358",
+  },
+  {
+    "userid": "3",
+    "title": "Test post 2",
+    "image": "UID 3",
+    "desc": "Test 2",
+    "date": "1678052012358",
+  }
+];
+
+let friends = [
+  {
+      "userid": "1",
+      "friendid": "2",
+  },
+  {
+    "userid": "1",
+    "friendid": "3",
+  },
+  {
+    "userid": "2",
+    "friendid": "1",
+  },
+  {
+    "userid": "2",
+    "friendid": "3",
+  }
+];
+
+router.get('/', (req, resp, next) => {
+  if (!req.body || !req.body.id)
+  {
+      resp.send(401, 'Bad request');
+  }
+
 });
-router.put('/', (req, res, next) => {
-    console.log('middleware');
-    req['craft'] = 'yo';
-    next();
-  }, (req, res, next) => {
-  res.json({data: { title: 'This is accounts/ Method:put for adding followers' }, craft: req.craft});
-});
-router.get('/', (req, res, next) => {
-    console.log('middleware');
-    req['craft'] = 'yo';
-    next();
-  }, (req, res, next) => {
-  res.json({data: { title: 'This is accounts/ Method:get for getting account' }, craft: req.craft});
-});
+
+
+
+
+
+
+
 router.get('/post', (req, res, next) => {
     console.log('middleware');
     req['craft'] = 'yo';
