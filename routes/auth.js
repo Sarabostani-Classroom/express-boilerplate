@@ -19,6 +19,16 @@ let users = [
         "id": "1",
         "username": "admin",
         "password": "admin",
+    },
+    {
+        "id": "2",
+        "username": "isaak",
+        "password": "wheeler",
+    },
+    {
+        "id": "3",
+        "username": "jake",
+        "password": "paul",
     }
 ];
 let sessions = [
