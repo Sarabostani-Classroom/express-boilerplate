@@ -66,6 +66,33 @@ let friends = [
   }
 ];
 
+
+router.get('/', (req, resp, next) => { //getting friends posts
+  let jsonResp = [];
+  if (!req.body || !req.body.id)
+  {
+      resp.send(401, 'Bad request');
+  }
+  console.log("!!!!!!!!!!!!!!!!!!");
+  posts.forEach(post => {
+    friends.forEach(friend => {
+      if(req.body.id === friend.userid && post.userid === friend.friendid){
+        console.log("Post: " + post.title + " image: " + post.image);
+        jsonResp.push(
+          {
+            "userid": post.userid,
+            "title": post.title,
+            "image": post.image,
+            "desc": post.desc,
+            "date": post.date,
+          }
+        );
+      }
+    });
+  });
+ resp.send(JSON.stringify(jsonResp));
+});
+/*
 router.get('/', (req, resp, next) => {
   if (!req.body || !req.body.id)
   {
@@ -114,6 +141,6 @@ router.get('/friends/posts', (req, res, next) => {
     next();
   }, (req, res, next) => {
   res.json({data: { title: 'This is accounts/friends/posts Method:get getting posts of friends' }, craft: req.craft});
-});
+});*/
 
 module.exports = router;

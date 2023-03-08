@@ -22,7 +22,7 @@ app.set('view engine', 'jade');
 
 app.use('/', homeRouter);
 app.use('/users', authCheck, usersRouter);
-app.use('/posts', authCheck, postsRouter);
+app.use('/posts', postsRouter);
 app.use('/auth', authRouter);
 
 // catch 404 and forward to error handler
