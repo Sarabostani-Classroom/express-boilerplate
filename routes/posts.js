@@ -1,7 +1,8 @@
-var express = require('express');
+const express = require('express');
 const mongoose = require('mongoose');
-var router = express.Router();
+const router = express.Router();
 
+router.use(express.json())
 
 mongoose.
 connect('mongodb+srv://admin:1234567Admin@tweeterapi.77aizmj.mongodb.net/Node-API?retryWrites=true&w=majority')
