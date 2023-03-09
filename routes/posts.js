@@ -1,5 +1,16 @@
 var express = require('express');
+const mongoose = require('mongoose');
 var router = express.Router();
+
+
+mongoose.
+connect('mongodb+srv://admin:1234567Admin@tweeterapi.77aizmj.mongodb.net/Node-API?retryWrites=true&w=majority')
+.then(() => {
+    console.log('connected to MongoDB')
+}).catch((error) => {
+    console.log(error)
+})
+
 
 
 let posts = [
