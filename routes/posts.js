@@ -191,16 +191,30 @@ router.delete('/', (req, resp, next) => { //delete a friend
   resp.send("Succefully Deleted!");
 });
 //TODO: view only one friends posts
-//TODO: etc...
-
-/*
-router.get('/', (req, resp, next) => {
+router.get('/', (req, resp, next) => { //getting only one friends posts
+  let jsonResp = [];
   if (!req.body || !req.body.id)
   {
       resp.send(401, 'Bad request');
   }
-
+  friends.forEach(post => {
+      if(req.body.id === post.friendid){
+        console.log("Post: " + post.title + " image: " + post.image);
+        jsonResp.push(
+          {
+            "userid": post.userid,
+            "title": post.title,
+            "image": post.image,
+            "desc": post.desc,
+            "date": post.date,
+          }
+        );
+      }
+  });
+ resp.send(JSON.stringify(jsonResp));
 });
-*/
+
+
+
 
 module.exports = router;
