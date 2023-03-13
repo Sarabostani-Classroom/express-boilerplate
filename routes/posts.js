@@ -182,21 +182,13 @@ router.delete('/', (req, resp, next) => { //delete a friend
   {
       resp.send(401, 'Bad request');
   }
-  posts.forEach(post => {
-      if(req.body.date === post.date){
-        posts[index] = {
-          userid: toString("id"),
-          title: toString("title"),
-          image: toString("image"),
-          desc: toString("desc"),
-          date: toString("date"),
-        };
-        console.log(posts[index].userid);
-          resp.send("post deleted" + index + posts.length);
-      }
-      index++;
-  });
-  resp.send("post not found");
+  friends.pop(
+    {
+      userid: toString(req.body.id),
+      friendid: toString(req.body.id),
+    }
+  );
+  resp.send("Succefully Deleted!");
 });
 //TODO: view only one friends posts
 //TODO: etc...
