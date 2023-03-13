@@ -1,16 +1,30 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var homeRouter = require('./routes/home');
-var usersRouter = require('./routes/users');
-var postsRouter = require('./routes/posts');
-var authRouter = require('./routes/auth');
+const Post = require('./models/postModel')
+const homeRouter = require('./routes/home');
+const usersRouter = require('./routes/users');
+const postsRouter = require('./routes/posts');
+const authRouter = require('./routes/auth');
 const { authCheck } = require('./auth/authCheck');
+const { json } = require('express');
+const mongoose = require('mongoose');
 
-var app = express();
+
+mongoose.
+connect('mongodb+srv://admin:1234567Admin@tweeterapi.77aizmj.mongodb.net/Node-API?retryWrites=true&w=majority')
+.then(() => {
+    console.log('connected to MongoDB')
+}).catch((error) => {
+    console.log(error)
+})
+
+
+
+const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -40,5 +54,17 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.post('/post', async(req, res) => {
+    try {
+        const post = await Post.create(req.body)
+        res.status(200).json(post);
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).json({message: error.message})
+    }
+})
+
+
 
 module.exports = app;
