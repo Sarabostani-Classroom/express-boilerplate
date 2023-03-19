@@ -1,3 +1,4 @@
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -17,11 +18,10 @@ const mongoose = require('mongoose');
 mongoose.
 connect('mongodb+srv://admin:1234567Admin@tweeterapi.77aizmj.mongodb.net/Node-API?retryWrites=true&w=majority')
 .then(() => {
-    console.log('connected to MongoDB')
+    console.log('connected to MongoDB kitoko')
 }).catch((error) => {
     console.log(error)
 })
-
 
 
 const app = express();

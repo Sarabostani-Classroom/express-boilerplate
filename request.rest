@@ -1,0 +1,10 @@
+GET http://localhost:3000/posts
+
+###
+
+POST http://localhost:3000/signIn
+Content-Type: application/json
+
+{
+    "username": "Fabrice"
+}
